@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIIMS - NICAZ Integrated System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 4em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #a8edea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #4CAF50;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .card h2 {
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            color: #a8edea;
+            border-bottom: 3px solid rgba(168, 237, 234, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+        
+        .feature-item:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #a8edea;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #1a2980;
+        }
+        
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            backdrop-filter: blur(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">NIIMS</div>
+            <div class="tagline">NICAZ Integrated Information Management System</div>
+            <div class="status-badge">● DEPLOYED & OPERATIONAL</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Pilot Institutions</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">1,250</span>
+                <span class="stat-label">Total Students</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Active Documents</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Upcoming Events</span>
+            </div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h2>Core Features</h2>
+                <ul class="feature-list">
+                    <li class="feature-item">Member Institution Database</li>
+                    <li class="feature-item">Document Management System</li>
+                    <li class="feature-item">Events & Calendar Management</li>
+                    <li class="feature-item">Job Board for Vacancies</li>
+                    <li class="feature-item">News & Advocacy Platform</li>
+                    <li class="feature-item">Role-Based Access Control</li>
+                    <li class="feature-item">Two-Factor Authentication</li>
+                    <li class="feature-item">Mobile Responsive Design</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>System Information</h2>
+                <p style="margin-bottom: 25px; line-height: 1.6; opacity: 0.95;">
+                    Your NIIMS instance is successfully deployed on Railway with enterprise-grade PostgreSQL database.
+                    The system is ready for pilot testing with 5 member institutions.
+                </p>
+                
+                <div style="margin: 25px 0;">
+                    <strong style="color: #a8edea; display: block; margin-bottom: 15px;">Technology Stack:</strong>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Django 4.2</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">REST API</span>
+                        <span class="tech-badge">Railway Hosting</span>
+                        <span class="tech-badge">Python 3.11</span>
+                        <span class="tech-badge">HTTPS/SSL</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                    <strong style="color: #a8edea;">Cost & Scaling:</strong><br>
+                    <div style="margin-top: 10px;">
+                        <div>• Demo Phase: <strong style="color: #4CAF50;">$0/month</strong></div>
+                        <div>• Production: <strong>$39/month</strong> (unlimited users)</div>
+                        <div>• Backups: <strong>Automated daily</strong></div>
+                        <div>• Uptime: <strong>99.9% SLA</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="/admin" class="btn btn-primary">
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                ACCESS ADMIN PANEL
+            </a>
+            <a href="/api" class="btn btn-secondary">
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4.5 11h-2V9H1v6h1.5v-2.5h2V15H6V9H4.5v2zm2.5-.5h1.5V15H10v-4.5h1.5V9H7v1.5zm5.5 0H14V15h1.5v-4.5H17V9h-4.5v1.5zm9-1.5H18v6h1.5v-2h2c.8 0 1.5-.7 1.5-1.5v-1c0-.8-.7-1.5-1.5-1.5zm0 2.5h-2v-1h2v1z"/>
+                </svg>
+                VIEW API DOCS
+            </a>
+            <a href="/health" class="btn btn-secondary">
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                SYSTEM HEALTH
+            </a>
+        </div>
+        
+        <div style="text-align: center; margin-top: 80px; opacity: 0.7; font-size: 0.9em; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>NICAZ NIIMS Demo • Version 1.0.0 • Data shown is for demonstration purposes</p>
+            <p>Ready for stakeholder presentation • Next phase: Pilot with 5 member institutions</p>
+            <p style="margin-top: 15px; font-size: 0.85em;">
+                <strong>Demo Credentials:</strong> 
+                <span style="background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 5px; margin: 0 5px;">
+                    admin / Admin123!
+                </span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
